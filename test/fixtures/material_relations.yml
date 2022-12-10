@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: material_relations
+#
+#  id          :integer          not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  material_id :integer          not null
+#  partner_id  :integer          not null
+#
+
+one:
+  partner_id: 1
+  material_id: 1
+
+two:
+  partner_id: 2
+  material_id: 2
+
+three:
+  partner_id: 3
+  material_id: 1
+
+four:
+  partner_id: 3
+  material_id: 2
+
+five:
+  partner_id: 3
+  material_id: 3

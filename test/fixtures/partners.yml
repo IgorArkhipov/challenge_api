@@ -1,0 +1,36 @@
+# == Schema Information
+#
+# Table name: partners
+#
+#  id               :integer          not null, primary key
+#  latitude         :decimal(10, 6)   not null
+#  longitude        :decimal(10, 6)   not null
+#  name             :string           not null
+#  operating_radius :decimal(6, 3)    not null
+#  rating           :float
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+one:
+  id: 1
+  name: FirstPartner
+  latitude: 9.99
+  longitude: 9.99
+  operating_radius: 9.99
+  rating: 5
+
+two:
+  id: 2
+  name: SecondPartner
+  latitude: 19.99
+  longitude: 19.99
+  operating_radius: 19.99
+  rating: 4
+
+three:
+  id: 3
+  name: ThirdPartner
+  latitude: 89.99
+  longitude: 129.99
+  operating_radius: 129.99
