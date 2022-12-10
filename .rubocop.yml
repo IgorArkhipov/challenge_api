@@ -1,0 +1,36 @@
+require: rubocop-rails
+
+AllCops:
+  inherit_mode:
+    merge:
+    - Exclude
+    - Include
+  DisplayCopNames: true
+  Exclude:
+    - db/schema.rb
+    - tmp/**/*
+  NewCops: enable
+  StyleGuideBaseURL: https://rubystyle.guide
+  TargetRubyVersion: 3.1
+Layout/LineLength:
+  Max: 120
+Metrics/AbcSize:
+  Max: 120
+Metrics/BlockLength:
+  AllowedMethods:
+    - class_methods
+    - context
+    - define
+    - describe
+    - it_behaves_like
+    - namespace
+    - shared_examples
+Style/Documentation:
+  Enabled: false
+Style/ExponentialNotation:
+  Enabled: false
+Style/SlicingWithRange:
+  Enabled: false
+
+Rails:
+  Enabled: true
