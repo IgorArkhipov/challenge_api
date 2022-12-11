@@ -13,4 +13,10 @@ module Authenticable
   rescue ActiveRecord::RecordNotFound
     nil
   end
+
+  protected
+
+  def authorized?
+    head :forbidden unless authorized_client
+  end
 end

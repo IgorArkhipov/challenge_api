@@ -26,6 +26,7 @@ gem 'bootsnap', require: false
 
 group :development do
   gem 'annotate'
+  gem 'faker', '~> 3.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
 end
