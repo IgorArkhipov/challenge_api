@@ -12,6 +12,8 @@ This API offers the following functionality:
 
 * Ruby version 3.1+
 
+* SQLite3 DB
+
 ## Installation
 
 * Update Ruby gem manager
