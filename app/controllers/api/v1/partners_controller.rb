@@ -34,8 +34,7 @@ module Api
         )
         return {} unless requirement.valid?
 
-        Partner.joins(material_relations: :material)
-               .where(materials: { name: requirement.material }).distinct
+        Partner.experienced_in(requirement.material)
                .in_area(requirement.latitude, requirement.longitude)
                .order(rating: :desc)
       end

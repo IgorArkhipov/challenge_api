@@ -67,4 +67,5 @@ This API offers the following functionality:
       }
     ```
   - current materials include 'wood', 'carpet' and 'tiles'
-  - `curl -X POST --header "Authorization: provided_token" --data "requirements[latitude]=50.37221" --data "requirements[longitude]=7.32442" --data "requirements[material][]=carpet" http://localhost:3000/api/v1/partners/match`
+  - `curl -X POST --header "Authorization: provided_token" --data "requirements[latitude]=50.37221" --data "requirements[longitude]=7.32442" --data "requirements[material][]=carpet" --data "requirements[material][]=wood" http://localhost:3000/api/v1/partners/match`
+  - if you provide an array of multiple materials, the result will match partners with experience in all requested materials at once (allowing you to have diff)

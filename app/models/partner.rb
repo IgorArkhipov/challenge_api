@@ -25,6 +25,14 @@ class Partner < ApplicationRecord
   validates :operating_radius, presence: true, numericality: { greater_than: 1.0 }
   validates :rating, allow_nil: true, numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: 10.0 }
 
+  scope :experienced_in, lambda { |arr|
+    mt = Material.arel_table
+    joins(material_relations: :material)
+      .where(materials: { name: arr })
+      .group(:id)
+      .having(mt[:id].count.gteq(arr.length))
+  }
+
   scope :in_area, lambda { |lat, long|
     cos_lat2 = Math.cos(lat * Math::PI / 180)**2
     query = "(((#{lat}-latitude)*(#{lat}-latitude))+((#{long}-longitude)*#{cos_lat2}*(#{long}-longitude)*#{cos_lat2}))"
