@@ -18,10 +18,17 @@ class Partner < ApplicationRecord
   has_many :experienced_materials, through: :material_relations, source: :material
 
   validates :latitude, presence: true,
-                       numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
+                       numericality: { greater_than_or_equal_to: -90.0, less_than_or_equal_to: 90.0 }
   validates :longitude, presence: true,
-                        numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+                        numericality: { greater_than_or_equal_to: -180.0, less_than_or_equal_to: 180.0 }
   validates :name, presence: true
-  validates :operating_radius, presence: true, numericality: { greater_than: 0 }
-  validates :rating, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
+  validates :operating_radius, presence: true, numericality: { greater_than: 1.0 }
+  validates :rating, allow_nil: true, numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: 10.0 }
+
+  scope :in_area, lambda { |lat, long|
+    cos_lat2 = Math.cos(lat * Math::PI / 180)**2
+    query = "(((#{lat}-latitude)*(#{lat}-latitude))+((#{long}-longitude)*#{cos_lat2}*(#{long}-longitude)*#{cos_lat2}))"
+    where(Arel.sql("#{query}<((operating_radius/111)*(operating_radius/111))"))
+      .order(Arel.sql("#{query} ASC"))
+  }
 end

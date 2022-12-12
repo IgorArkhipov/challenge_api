@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AuthToken
-  SECRET = Rails.application.secrets.secret_key_base.to_s
+  SECRET = 'challenge_secret'
 
   def self.encode(payload, expire = 8.hours.from_now)
     payload[:exp] = expire.to_i
